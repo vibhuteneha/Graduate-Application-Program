@@ -1,1 +1,3 @@
 # Graduate-Application-Program
+
+Developed a Graduate Program application where a student can Register and login to his account and apply for various programs of a college he can even manage his old applications(edit/delete). The admin can login and manage the departments, programs and any additional requirements a particular department has.  Its a Spring-MVC web application implemented using Java and I used Hibernate to map the java classes with the database. For database I used PostgreSQL. For Front-end I used HTML5 and CSS3.
