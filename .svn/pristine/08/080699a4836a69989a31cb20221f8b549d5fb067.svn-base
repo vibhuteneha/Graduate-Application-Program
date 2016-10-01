@@ -1,0 +1,33 @@
+package gapp.model.dao.jpa;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+
+import gapp.model.Application;
+import gapp.model.User;
+import gapp.model.dao.ApplicationDao;
+
+@Repository
+public class ApplicationDaoImpl implements ApplicationDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+    
+    @Override
+	public User getFirstNameId(String first_name) {
+		return entityManager.createQuery( "from User where firstName  = :first_name", User.class )
+				.setParameter("first_name", first_name)
+	            .getSingleResult();
+	}
+
+	@Override
+	public List<Application> getApplication(Integer id) {
+		return entityManager.createQuery( "from Application where applicant.id = :id order by applicant", Application.class )
+				.setParameter("id", id)
+	            .getResultList();
+	}
+  
+}

@@ -1,0 +1,78 @@
+package gapp.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "arecords")
+public class ARecord implements Serializable {
+	
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue
+    private Integer id;
+	
+	private String toefl;
+	
+	private String gre;
+	
+	private String gpa;
+	
+	private String transcripts;
+	
+	
+	
+	public ARecord()
+	{
+		
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getToefl() {
+		return toefl;
+	}
+
+	public void setToefl(String toefl) {
+		this.toefl = toefl;
+	}
+
+	public String getGre() {
+		return gre;
+	}
+
+	public void setGre(String gre) {
+		this.gre = gre;
+	}
+
+	public String getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(String gpa) {
+		this.gpa = gpa;
+	}
+
+	public String getTranscripts() {
+		return transcripts;
+	}
+
+	public void setTranscripts(String transcripts) {
+		this.transcripts = transcripts;
+	}
+
+}

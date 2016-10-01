@@ -1,0 +1,112 @@
+package gapp.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "applications")
+public class Application implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
+	private String status;
+	
+	@OneToMany(mappedBy = "applications")
+	private List<ApplicationStatus> applicationstatus;
+	
+	@ManyToOne
+	private User applicant;
+	
+	@ManyToOne
+	private Term terms;
+	
+	@ManyToOne
+	private Program programs;
+	
+	@OneToMany(mappedBy = "application")
+    private List<Degree> degrees;
+    
+    @OneToOne
+	private ARecord arecords;
+	
+	public Application()
+	{
+		
+	}
+	
+	public List<Degree> getDegrees() {
+		return degrees;
+	}
+
+	public void setDegrees(List<Degree> degrees) {
+		this.degrees = degrees;
+	}
+
+	public ARecord getArecords() {
+		return arecords;
+	}
+
+	public void setArecords(ARecord arecords) {
+		this.arecords = arecords;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<ApplicationStatus> getApplicationstatus() {
+		return applicationstatus;
+	}
+
+	public void setApplicationstatus(List<ApplicationStatus> applicationstatus) {
+		this.applicationstatus = applicationstatus;
+	}
+
+	public User getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(User applicant) {
+		this.applicant = applicant;
+	}
+
+	public Program getPrograms() {
+		return programs;
+	}
+
+	public void setPrograms(Program programs) {
+		this.programs = programs;
+	}
+
+	public Term getTerms() {
+		return terms;
+	}
+
+	public void setTerms(Term terms) {
+		this.terms = terms;
+	}
+}

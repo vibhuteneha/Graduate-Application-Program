@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>GAPP Login</title>
+<style>
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: "Georgia", serif;
+	font-weight: bold;
+}
+
+.myBackground {
+	background-color: rgba(255, 255, 255, 0.5);
+	color: inherit;
+}
+
+th {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 30px
+}
+
+.navbar {
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border: 0;
+	border-radius: 0;
+	margin-bottom: 0;
+	font-size: 12px;
+	letter-spacing: 5px;
+}
+
+.navbar-nav  li a:hover {
+	color: #FF6600 !important;
+}
+
+.panel-heading {
+	color: #990033;
+}
+</style>
+</head>
+<body background="images/img6.jpg">
+	<div class="container">
+		<nav class="navbar navbar-inverse nav-fixed-top">
+		<h3>
+			<span class="navbar-header"> <a class="navbar-brand" href="#"><span
+					class="glyphicon glyphicon-education"></span><b>GAPP</b></a>
+			</span>
+		</h3>
+		<h4>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html"><span
+						class="glyphicon glyphicon-home"></span><b>Home</b></a></li>
+				<li><a href="register.html"><span
+						class="glyphicon glyphicon-user"></span><b>Register</b></a></li>
+			</ul>
+		</h4>
+		</nav>
+
+		<div class="jumbotron myBackground">
+			<h1 align="center" class="whitney">
+				<b>GAPP Login</b>
+			</h1>
+		</div>
+
+		<div class="panel myBackground">
+			<div class="panel-heading">
+				<h3 align="center">
+					<b>Login Here!!! </b><span class="glyphicon glyphicon-log-in"></span>
+				</h3>
+			</div>
+			<br /> <br />
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<form:form modelAttribute="user">
+						<table border="2" class="table table-hover">
+							<tbody>
+								<tr class="active">
+									<th scope="row">Email-ID:</th>
+									<td><form:input type="text" class="form-control" placeholder="Enter Email-ID"
+											path="email" /><font color="red"><i><b><form:errors
+														path="email" /></b></i></font></td>
+								</tr>
+								<tr class="active">
+									<th scope="row">Password:</th>
+									<td><form:input type="password" class="form-control" placeholder="Enter Password"
+											path="password" /><font color="red"><i><b><form:errors
+														path="password" /></b></i></font></td>
+								</tr>
+								<tr class="active">
+									<td colspan="2" scope="row" style="text-align: center;">
+										<button type="submit" class="btn btn-success btn-lg"
+											name="login">
+											<span class="glyphicon glyphicon-check"></span> Login
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

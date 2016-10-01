@@ -1,0 +1,135 @@
+
+    create table additionalinfo (
+        id int4 not null,
+        field_name varchar(255),
+        field_status varchar(255),
+        field_type varchar(255),
+        departments_id int4,
+        primary key (id)
+    );
+
+    create table admin_staff (
+        user_id int4 not null,
+        role varchar(255)
+    );
+
+    create table applications (
+        id int4 not null,
+        status varchar(255),
+        applicant_id int4,
+        arecords_id int4,
+        programs_id int4,
+        terms_id int4,
+        primary key (id)
+    );
+
+    create table applicationstatus (
+        id int4 not null,
+        status_comment varchar(255),
+        status_name varchar(255),
+        status_time varchar(255),
+        applications_id int4,
+        primary key (id)
+    );
+
+    create table arecords (
+        id int4 not null,
+        gpa varchar(255),
+        gre varchar(255),
+        toefl varchar(255),
+        transcripts varchar(255),
+        primary key (id)
+    );
+
+    create table degrees (
+        id int4 not null,
+        degree_earned varchar(255),
+        major varchar(255),
+        school_name varchar(255),
+        time_period varchar(255),
+        application_id int4,
+        primary key (id)
+    );
+
+    create table departments (
+        id int4 not null,
+        department_name varchar(255),
+        primary key (id)
+    );
+
+    create table programs (
+        id int4 not null,
+        program_name varchar(255),
+        departments_id int4,
+        primary key (id)
+    );
+
+    create table terms (
+        id int4 not null,
+        term_name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+        id int4 not null,
+        cin varchar(255),
+        citizenship varchar(255),
+        dob varchar(255),
+        email varchar(255) not null,
+        first_name varchar(255),
+        gender varchar(255),
+        last_name varchar(255),
+        password varchar(255) not null,
+        phone varchar(255),
+        primary key (id)
+    );
+
+    alter table users 
+        add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table additionalinfo 
+        add constraint FK_j3m5tvariqvywimp6i1vdqy9p 
+        foreign key (departments_id) 
+        references departments;
+
+    alter table admin_staff 
+        add constraint FK_a5npico4yito5lvrc1oblscjo 
+        foreign key (user_id) 
+        references users;
+
+    alter table applications 
+        add constraint FK_lmcomkxa52fc4kw1pgin4ov1i 
+        foreign key (applicant_id) 
+        references users;
+
+    alter table applications 
+        add constraint FK_4jr026idevi22ii8uno33xwrx 
+        foreign key (arecords_id) 
+        references arecords;
+
+    alter table applications 
+        add constraint FK_kakk1kv9y1iq5oeyfxmk1ij2a 
+        foreign key (programs_id) 
+        references programs;
+
+    alter table applications 
+        add constraint FK_htgvex5xhqajjuqury13onx30 
+        foreign key (terms_id) 
+        references terms;
+
+    alter table applicationstatus 
+        add constraint FK_deptiedcrttph0edavigqlp7w 
+        foreign key (applications_id) 
+        references applications;
+
+    alter table degrees 
+        add constraint FK_rqi4wrhhtwwk6r9c9hcjyext9 
+        foreign key (application_id) 
+        references applications;
+
+    alter table programs 
+        add constraint FK_6995prie8a46y8rquuqq1rigy 
+        foreign key (departments_id) 
+        references departments;
+
+    create sequence hibernate_sequence;

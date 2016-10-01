@@ -1,0 +1,44 @@
+/*package gapp.model.dao.jpa;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+
+import gapp.model.Application;
+import gapp.model.Department;
+import gapp.model.Program;
+import gapp.model.Term;
+import gapp.model.dao.TermDao;
+
+@Repository
+public class TermDaoImpl implements TermDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
+	@Override
+	public Term getTerm(String term_name) {
+		return entityManager.createQuery( "from Term where term_name  = :term_name", Term.class )
+				.setParameter("term_name", term_name)
+	            .getSingleResult();
+		
+	}
+
+	@Override
+	public Application getApplication(Integer term_id) {
+        return entityManager.find( Application.class, term_id );
+	}
+
+	@Override
+	public Program getProgram(Integer application_id) {
+        return entityManager.find( Program.class, application_id );
+	}
+
+	@Override
+	public Department getDepartment(Integer program_id) {
+        return entityManager.find( Department.class, program_id );
+	}
+
+  
+}*/

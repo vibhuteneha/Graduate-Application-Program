@@ -1,0 +1,166 @@
+
+    create table additionalinfo (
+        id int4 not null,
+        field_name varchar(255),
+        field_status varchar(255),
+        field_type varchar(255),
+        departments_id int4,
+        primary key (id)
+    );
+    
+    insert into additionalinfo values(1, 'GMAT', 'required', 'number', 1);
+
+    create table admin_staff (
+        user_id int4 not null,
+        role varchar(255)
+    );
+    
+    insert into admin_staff values (1, 'Admin');
+    insert into admin_staff values (2, 'Staff');
+    insert into admin_staff values (3, 'Staff');
+    insert into admin_staff values (4, 'Student');
+    insert into admin_staff values (5, 'Student');
+
+    create table applications (
+        id int4 not null,
+        status varchar(255),
+        applicant_id int4,
+        arecords_id int4,
+        programs_id int4,
+        terms_id int4,
+        primary key (id)
+    );
+    
+    insert into applications values (1, 'New', 4, 1, 1, 1);
+
+    create table applicationstatus (
+        id int4 not null,
+        status_comment varchar(255),
+        status_name varchar(255),
+        status_time varchar(255),
+        applications_id int4,
+        primary key (id)
+    );
+    
+    insert into applicationstatus values (1, '', 'New', '01/28/2016 16:35:00', 1);
+
+    create table arecords (
+        id int4 not null,
+        gpa varchar(255),
+        gre varchar(255),
+        toefl varchar(255),
+        transcripts varchar(255),
+        primary key (id)
+    );
+    
+    insert into arecords values(1, '3.5', '299', '89', '');
+
+    create table degrees (
+        id int4 not null,
+        degree_earned varchar(255),
+        major varchar(255),
+        school_name varchar(255),
+        time_period varchar(255),
+        application_id int4,
+        primary key (id)
+    );
+    
+    insert into degrees values(1, 'BCom', 'Accounting', 'Sandip Foundation', '2010-2013', 1);
+    insert into degrees values(2, 'HSC', 'Commerce', 'BYK', '2008-2010', 1);
+
+    create table departments (
+        id int4 not null,
+        department_name varchar(255),
+        primary key (id)
+    );
+    
+    insert into departments values(1, 'Accounting');
+    insert into departments values(2, 'Computer Science');
+
+    create table programs (
+        id int4 not null,
+        program_name varchar(255),
+        departments_id int4,
+        primary key (id)
+    );
+    
+    insert into programs values(1, 'MS in Accounting', 1);
+    insert into programs values(2, 'MS in Computer Science', 2);
+
+    create table terms (
+        id int4 not null,
+        term_name varchar(255),
+        primary key (id)
+    );
+    
+    insert into terms values(1, 'Fall 2016');
+
+    create table users (
+        id int4 not null,
+        cin varchar(255),
+        citizenship varchar(255),
+        dob varchar(255),
+        email varchar(255) not null,
+        first_name varchar(255),
+        gender varchar(255),
+        last_name varchar(255),
+        password varchar(255) not null,
+        phone varchar(255),
+        primary key (id)
+    );
+    
+    insert into users (id, email, first_name, last_name, password) values(1, 'admin@localhost.localdomain', 'admin', 'Brown', 'abcd');
+    insert into users (id, email, first_name, last_name, password) values(2, 'staff1@localhost.localdomain', 'staff1', 'Miller', 'abcd');
+    insert into users (id, email, first_name, last_name, password) values(3, 'staff2@localhost.localdomain', 'staff2', 'Jones', 'abcd');
+	insert into users values (4, '304356031', 'India', '09/10/1992', 'student1@localhost.localdomain', 'student1', 'female', 'Adams', 'abcd', '6268456546');
+    insert into users values (5, '304356058', 'Australia', '11/15/1993', 'student2@localhost.localdomain', 'student2', 'male', 'Smiths', 'abcd', '6268455597');
+
+    alter table users 
+        add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table additionalinfo 
+        add constraint FK_j3m5tvariqvywimp6i1vdqy9p 
+        foreign key (departments_id) 
+        references departments;
+
+    alter table admin_staff 
+        add constraint FK_a5npico4yito5lvrc1oblscjo 
+        foreign key (user_id) 
+        references users;
+
+    alter table applications 
+        add constraint FK_lmcomkxa52fc4kw1pgin4ov1i 
+        foreign key (applicant_id) 
+        references users;
+
+    alter table applications 
+        add constraint FK_4jr026idevi22ii8uno33xwrx 
+        foreign key (arecords_id) 
+        references arecords;
+
+    alter table applications 
+        add constraint FK_kakk1kv9y1iq5oeyfxmk1ij2a 
+        foreign key (programs_id) 
+        references programs;
+
+    alter table applications 
+        add constraint FK_htgvex5xhqajjuqury13onx30 
+        foreign key (terms_id) 
+        references terms;
+
+    alter table applicationstatus 
+        add constraint FK_deptiedcrttph0edavigqlp7w 
+        foreign key (applications_id) 
+        references applications;
+
+    alter table degrees 
+        add constraint FK_rqi4wrhhtwwk6r9c9hcjyext9 
+        foreign key (application_id) 
+        references applications;
+
+    alter table programs 
+        add constraint FK_6995prie8a46y8rquuqq1rigy 
+        foreign key (departments_id) 
+        references departments;
+
+    create sequence hibernate_sequence;

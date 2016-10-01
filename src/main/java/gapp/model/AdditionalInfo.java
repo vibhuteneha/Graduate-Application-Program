@@ -1,0 +1,105 @@
+package gapp.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "additionalinfo")
+public class AdditionalInfo implements Serializable{
+	
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue
+    private Integer id;
+
+	@Column(name = "field_name")
+	private String fieldName;
+	
+	@Column(name = "field_type")
+	private String fieldType;
+	
+	@Column(name = "field_status")
+	private String fieldStatus;
+	
+	@Column(name = "field_value")
+	private String fieldValue;
+
+	@ManyToOne
+	private Department departments;
+	
+	@ManyToOne
+	private Application application;
+
+	public AdditionalInfo()
+	{
+		
+	}
+
+	public Department getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(Department departments) {
+		this.departments = departments;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+
+	public String getFieldType() {
+		return fieldType;
+	}
+
+	public void setFieldType(String fieldType) {
+		this.fieldType = fieldType;
+	}
+
+	public String getFieldStatus() {
+		return fieldStatus;
+	}
+
+	public void setFieldStatus(String fieldStatus) {
+		this.fieldStatus = fieldStatus;
+	}
+	
+	public String getFieldValue() {
+		return fieldValue;
+	}
+
+	public void setFieldValue(String fieldValue) {
+		this.fieldValue = fieldValue;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+	
+	
+	
+	
+}
